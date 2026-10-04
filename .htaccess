@@ -1,0 +1,16 @@
+Options -Indexes
+
+<FilesMatch "^(config|auth)\.php$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "^orders\.log$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 403 ^/orders/
+RedirectMatch 403 ^/backup/
+RedirectMatch 404 /\.git
+<FilesMatch "^(update_order|delete_order|get_orders)\.php$">
+    # доступ только через админ-сессию (проверяется в коде)
+</FilesMatch>
